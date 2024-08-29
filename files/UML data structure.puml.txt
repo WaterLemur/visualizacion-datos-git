@@ -1,0 +1,34 @@
+@startuml
+!theme amiga
+
+class DataBase {
+ -long ID
+ -Data[] data
+ ~GetData()
+ +SetData()
+ +UploadSpreadSheet()
+}
+
+
+class Data{
+
+ -long dataID
+ -string name
+ -float value
+ -DateTime date
+
+ -string notes
+ -byte playerID
+ -byte teamID
+}
+
+class Player{
+ -health
+ -ammo
+ -lifes
+
+ -TakeDamage()
+ -ShootBullet()
+ -Dead()
+}
+@enduml
