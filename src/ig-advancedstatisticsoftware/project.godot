@@ -23,5 +23,6 @@ project/assembly_name="IG-AdvancedStatisticSoftware"
 
 folder_colors={
 "res://images/": "green",
-"res://scripts/": "teal"
+"res://scripts/": "teal",
+"res://shaders/": "purple"
 }
