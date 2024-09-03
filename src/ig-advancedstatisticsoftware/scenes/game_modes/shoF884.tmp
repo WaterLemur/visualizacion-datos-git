@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://dks2134hj0jti"]
+
+[ext_resource type="Script" path="res://scripts/shooter.gd" id="1_udgt4"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_huwfh"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cqvva"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ktohj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f1ia4"]
+size = Vector3(1, 1.49414, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n2r1j"]
+
+[node name="Shooter" type="Node3D"]
+script = ExtResource("1_udgt4")
+
+[node name="Floor" type="CSGMesh3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+mesh = SubResource("PlaneMesh_huwfh")
+
+[node name="Actors" type="Node3D" parent="."]
+
+[node name="Player" type="Camera3D" parent="Actors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 8.44085)
+
+[node name="RayCast3D" type="RayCast3D" parent="Actors/Player"]
+target_position = Vector3(0, 0, -100)
+
+[node name="Enemy" type="CSGMesh3D" parent="Actors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_cqvva")
+
+[node name="Area3D" type="Area3D" parent="Actors/Enemy"]
+
+[node name="Hitbox Head" type="CollisionShape3D" parent="Actors/Enemy/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_ktohj")
+
+[node name="Hitbox Body" type="CollisionShape3D" parent="Actors/Enemy/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24707, 0)
+shape = SubResource("BoxShape3D_f1ia4")
+
+[node name="Obstacle" type="CSGMesh3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 0.5, -1, 1, 3)
+mesh = SubResource("BoxMesh_n2r1j")

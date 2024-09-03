@@ -1,7 +1,7 @@
 extends Node
 
-var game = preload("res://scenes/game.tscn").instantiate()
-
+@onready var game = preload("res://scenes/game.tscn").instantiate()
+@onready var hud = $HUD
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,4 +15,4 @@ func _process(delta: float) -> void:
 
 func _new_game_pressed() -> void:
 	add_child(game)
-	remove_child(self)
+	hud.visible = true
