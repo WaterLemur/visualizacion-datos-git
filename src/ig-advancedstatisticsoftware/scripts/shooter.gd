@@ -14,8 +14,13 @@ func _process(delta: float) -> void:
 	d = delta
 
 func _unhandled_input(event):
+	# Rotation
 	if event is InputEventMouseMotion:
 	# Calculate the rotation based on mouse movement
 		player.rotate_y(-event.relative.x * sensitivity * sens_x * d)
 		player.rotate_x(-event.relative.y * sensitivity * sens_x * d)
 		player.rotation.z = 0
+	# Shoot
+	if event is InputEventMouseButton:
+		if event.pressed:
+			print("Mouse button pressed!")
