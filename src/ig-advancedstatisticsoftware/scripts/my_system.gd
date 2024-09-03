@@ -43,8 +43,8 @@ func _load_main():
 	remove_child(intro)
 	add_child(main)
 
-
-
 func _load_game():
 	remove_child(main)
 	add_child(game)
+
+	

@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://cpt6xp2anhudo"]
+[gd_scene load_steps=2 format=3 uid="uid://bk7sd3wippivw"]
 
-[node name="Game" type="Node3D"]
+[ext_resource type="PackedScene" uid="uid://dks2134hj0jti" path="res://scenes/game_modes/shooter.tscn" id="1_cm7os"]
+
+[node name="Game" type="Node"]
+
+[node name="Shooter" parent="." instance=ExtResource("1_cm7os")]
