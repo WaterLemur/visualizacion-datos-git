@@ -1,4 +1,4 @@
 # visualizacion-datos-git
 Proyecto visualizacion de datos
 
-Infinity games ADVANCED statistics software
+IGASS Infinity Ga∞es ADVANCED Statistics Software
