@@ -5,7 +5,7 @@ var main = preload("res://scenes/main.tscn").instantiate()
 var game = preload("res://scenes/game.tscn").instantiate()
 
 var timer = 0.0
-var maxTimer = 3.0
+var maxTimer = 2.0
 var timerSpeed = 1.0
 var state = 0
 

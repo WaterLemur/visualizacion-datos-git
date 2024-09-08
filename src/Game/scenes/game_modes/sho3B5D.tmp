@@ -1,11 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dks2134hj0jti"]
+[gd_scene load_steps=12 format=3 uid="uid://dks2134hj0jti"]
 
 [ext_resource type="Script" path="res://scripts/shooter.gd" id="1_udgt4"]
-[ext_resource type="Script" path="res://scripts/ray_cast_3d.gd" id="2_ntbe0"]
+[ext_resource type="LabelSettings" uid="uid://b3p0phu0kkxd2" path="res://system/ls_timer_.tres" id="2_4mdbf"]
 [ext_resource type="Texture2D" uid="uid://bbtit70scyar7" path="res://images/Infinity_Ga∞es_LOGO_5_C.png" id="3_u5yoe"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="3_x2kxb"]
 [ext_resource type="FontFile" uid="uid://b6jp10t35lp07" path="res://system/ff_miss.tres" id="4_giabt"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_huwfh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q1b3y"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cqvva"]
 
@@ -78,7 +81,7 @@ offset_right = 3.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 1, 1, 1)
+color = Color(0, 1, 1, 0.643137)
 
 [node name="bottom" type="ColorRect" parent="HUD/Crosshair/cross"]
 layout_mode = 1
@@ -93,7 +96,7 @@ offset_right = 3.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 1, 1, 1)
+color = Color(0, 1, 1, 0.643137)
 
 [node name="right" type="ColorRect" parent="HUD/Crosshair/cross"]
 layout_mode = 1
@@ -108,7 +111,7 @@ offset_right = 28.0
 offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 1, 1, 1)
+color = Color(0, 1, 1, 0.643137)
 
 [node name="left" type="ColorRect" parent="HUD/Crosshair/cross"]
 layout_mode = 1
@@ -123,7 +126,22 @@ offset_right = -10.0
 offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 1, 1, 1)
+color = Color(0, 1, 1, 0.643137)
+
+[node name="Timer" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.5
+offset_top = 30.0
+offset_right = 36.5
+offset_bottom = 66.0
+grow_horizontal = 2
+text = "88:88 "
+label_settings = ExtResource("2_4mdbf")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Floor" type="CSGMesh3D" parent="."]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
@@ -131,14 +149,19 @@ mesh = SubResource("PlaneMesh_huwfh")
 
 [node name="Actors" type="Node3D" parent="."]
 
-[node name="Player" type="Camera3D" parent="Actors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 8.44085)
+[node name="Player" type="CharacterBody3D" parent="Actors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 8)
+script = ExtResource("3_x2kxb")
+
+[node name="Camera3D" type="Camera3D" parent="Actors/Player"]
 
 [node name="RayCast3D" type="RayCast3D" parent="Actors/Player"]
 target_position = Vector3(0, 0, -100)
 hit_from_inside = true
 collide_with_areas = true
-script = ExtResource("2_ntbe0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Actors/Player"]
+shape = SubResource("CapsuleShape3D_q1b3y")
 
 [node name="Enemy" type="CSGMesh3D" parent="Actors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

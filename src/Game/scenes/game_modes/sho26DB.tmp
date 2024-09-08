@@ -1,0 +1,209 @@
+[gd_scene load_steps=11 format=3 uid="uid://dks2134hj0jti"]
+
+[ext_resource type="Script" path="res://scripts/shooter.gd" id="1_udgt4"]
+[ext_resource type="LabelSettings" uid="uid://b3p0phu0kkxd2" path="res://system/ls_timer_.tres" id="2_4mdbf"]
+[ext_resource type="PackedScene" uid="uid://dmq1uvpmhunba" path="res://scenes/player.tscn" id="3_o6g1s"]
+[ext_resource type="Texture2D" uid="uid://bbtit70scyar7" path="res://images/Infinity_Ga∞es_LOGO_5_C.png" id="3_u5yoe"]
+[ext_resource type="FontFile" uid="uid://b6jp10t35lp07" path="res://system/ff_miss.tres" id="4_giabt"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_huwfh"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cqvva"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f1ia4"]
+size = Vector3(1, 1.49414, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ktohj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n2r1j"]
+
+[node name="Shooter" type="Node3D"]
+script = ExtResource("1_udgt4")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Crosshair" type="Control" parent="HUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dot" type="ColorRect" parent="HUD/Crosshair"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = -14.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 1, 1, 1)
+
+[node name="cross" type="Control" parent="HUD/Crosshair"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="top" type="ColorRect" parent="HUD/Crosshair/cross"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = 10.0
+offset_right = 3.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 0.643137)
+
+[node name="bottom" type="ColorRect" parent="HUD/Crosshair/cross"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -25.0
+offset_right = 3.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 0.643137)
+
+[node name="right" type="ColorRect" parent="HUD/Crosshair/cross"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 28.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 0.643137)
+
+[node name="left" type="ColorRect" parent="HUD/Crosshair/cross"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -3.0
+offset_right = -10.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 0.643137)
+
+[node name="Timer" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.5
+offset_top = 30.0
+offset_right = 36.5
+offset_bottom = 66.0
+grow_horizontal = 2
+text = "88:88 "
+label_settings = ExtResource("2_4mdbf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Floor" type="CSGMesh3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+mesh = SubResource("PlaneMesh_huwfh")
+
+[node name="Actors" type="Node3D" parent="."]
+
+[node name="Player" parent="Actors" instance=ExtResource("3_o6g1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="Enemy" type="CSGMesh3D" parent="Actors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_cqvva")
+
+[node name="Area Body" type="Area3D" parent="Actors/Enemy"]
+
+[node name="Hitbox Body" type="CollisionShape3D" parent="Actors/Enemy/Area Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24707, 0)
+shape = SubResource("BoxShape3D_f1ia4")
+
+[node name="Area Head" type="Area3D" parent="Actors/Enemy"]
+
+[node name="Hitbox Head" type="CollisionShape3D" parent="Actors/Enemy/Area Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_ktohj")
+
+[node name="Sprite3D" type="Sprite3D" parent="Actors/Enemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.777404, 1.58322, 0)
+visible = false
+texture = ExtResource("3_u5yoe")
+
+[node name="Indicator HS" type="Label3D" parent="Actors/Enemy"]
+transform = Transform3D(0.971151, 0.238466, 0, -0.238466, 0.971151, 0, 0, 0, 1, 0.76121, 1.29437, 0)
+modulate = Color(0.915025, 0.789697, 0, 1)
+outline_modulate = Color(1, 0, 0, 1)
+text = "!"
+font = ExtResource("4_giabt")
+font_size = 167
+outline_size = 57
+
+[node name="Indicator BS" type="Label3D" parent="Actors/Enemy"]
+transform = Transform3D(0.886268, 0.463172, 0, -0.463172, 0.886268, 0, 0, 0, 1, 0.931246, -0.189483, 0)
+modulate = Color(0.179404, 0.611246, 1, 1)
+outline_modulate = Color(0.628012, 0.0010943, 0.753736, 1)
+text = "*"
+font = ExtResource("4_giabt")
+font_size = 322
+outline_size = 57
+
+[node name="Indicator Miss" type="Label3D" parent="Actors/Enemy"]
+transform = Transform3D(0.919362, -0.393412, 0, 0.393412, 0.919362, 0, 0, 0, 1, -1.09212, 1.09477, 0)
+modulate = Color(6.44952e-06, 0.702411, 0.523712, 1)
+outline_modulate = Color(0.714713, 2.39691e-05, 0.517135, 1)
+text = "?"
+font = ExtResource("4_giabt")
+font_size = 192
+outline_size = 57
+
+[node name="Obstacle" type="CSGMesh3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 0.5, -2.16891, 1, 3)
+use_collision = true
+mesh = SubResource("BoxMesh_n2r1j")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6.60037, 0)
+spot_range = 7.44132
+spot_angle = 30.0033

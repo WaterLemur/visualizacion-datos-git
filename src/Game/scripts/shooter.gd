@@ -1,9 +1,7 @@
 extends Node3D
 
-var sens_x = 0.25
-var sensitivity = 1
-var d = 1
-
+var seconds = 0
+var minutes = 0
 
 var hs_on = false
 var bs_on = false
@@ -16,37 +14,15 @@ var bs_timer = 0
 var miss_timer_max = 0.5
 var miss_timer = 0
 
-@onready var player = $Actors/Player
 @onready var raycast = $Actors/Player/RayCast3D
 @onready var hitbox_head = $"Actors/Enemy/Area Head"
 @onready var hitbox_body = $"Actors/Enemy/Area Body"
 @onready var indicator_hs = $"Actors/Enemy/Indicator HS"
 @onready var indicator_bs = $"Actors/Enemy/Indicator BS"
 @onready var indicator_miss = $"Actors/Enemy/Indicator Miss"
+@onready var l_timer = $HUD/Timer
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void: 
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	hs_timer = hs_timer_max
-	indicator_hs.visible = false
-	indicator_bs.visible = false
-	indicator_miss.visible = false
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	d = delta
-	headshot_indicator(delta)
-	bodyshot_indicator(delta)
-	miss_indicator(delta)
-	#if raycast.is_on_wall():
-	#	print("RayCast3D is intersecting a physics body")
 func _unhandled_input(event):
-	# Rotation
-	if event is InputEventMouseMotion:
-	# Calculate the rotation based on mouse movement
-		player.rotate_y(-event.relative.x * sensitivity * sens_x * d)
-		player.rotate_x(-event.relative.y * sensitivity * sens_x * d)
-		player.rotation.z = 0
 	# Shoot
 	if event is InputEventMouseButton:
 		if event.pressed:
@@ -63,6 +39,24 @@ func _unhandled_input(event):
 				miss_on = true
 				indicator_miss.rotation_degrees += Vector3(0, 0, randi_range(-360, 360))
 
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void: 
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	hs_timer = hs_timer_max
+	indicator_hs.visible = false
+	indicator_bs.visible = false
+	indicator_miss.visible = false
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	timer(delta)
+	headshot_indicator(delta)
+	bodyshot_indicator(delta)
+	miss_indicator(delta)
+	#if raycast.is_on_wall():
+	#	print("RayCast3D is intersecting a physics body")
+
+	
 func headshot_indicator(delta: float):
 	if hs_on == true:
 		if hs_timer <= 0:
@@ -92,3 +86,21 @@ func miss_indicator(delta: float):
 		else:
 			indicator_miss.visible = true
 			miss_timer -= delta
+
+func timer(delta):
+	if seconds > 60:
+		seconds = 0
+		minutes += 1
+		if minutes > 60:
+			minutes = 0
+	else:
+		seconds += delta
+		var m = str(int(minutes))
+		if minutes < 10: m = "0" + m
+		var s = str(int(seconds))
+		if seconds < 10: s = "0" + s
+		l_timer.text = m + ":" + s
+
+func send_to_google_sheets():
+	var script_path = "res://scripts/telemetry.py"
+	OS.execute(script_path, [])
