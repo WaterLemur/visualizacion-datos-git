@@ -1,6 +1,22 @@
 # visualizacion-datos-git
 Proyecto visualizacion de datos
 
-IGASS Infinity Ga∞es ADVANCED Statistics Software
+> [!IMPORTANT]
+> Game: [TMP Game](https://water-lemur.itch.io/clicker-game)
+> 
+> Web: [Infinity Ga∞es® Statistics](https://sites.google.com/view/visualizacion-datos-ig/home)
 
-![Infinity Ga∞es LOGO](https://github.com/WaterLemur/visualizacion-datos-git/blob/main/files/Infinity_Ga∞es_LOGO_5_I_small.png?raw=true)
+---
+
+# IGASS Infinity Ga∞es® ADVANCED Statistics Software
+
+![Infinity Ga∞es® LOGO](https://github.com/WaterLemur/visualizacion-datos-git/blob/main/Files/Infinity_Ga∞es_LOGO_5_I_small.png?raw=true)
+
+
+# Assets
+
+Headshot ㅤㅤㅤㅤㅤBodyshotㅤㅤㅤㅤㅤMiss
+
+![Headshot](https://github.com/WaterLemur/visualizacion-datos-git/blob/main/Web/Assets/headshot.jpg?raw=true)
+![Bodyshot](https://github.com/WaterLemur/visualizacion-datos-git/blob/main/Web/Assets/bodyshot.jpg?raw=true)
+![Miss](https://github.com/WaterLemur/visualizacion-datos-git/blob/main/Web/Assets/miss.jpg?raw=true)
