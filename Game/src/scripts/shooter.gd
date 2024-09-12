@@ -29,7 +29,6 @@ func _unhandled_input(event):
 			print("Mouse button pressed!")
 			#if raycast.is_on_wall():
 			var collider = raycast.get_collider()
-			print(collider.name)
 			if collider == hitbox_head:
 				hs_on = true
 			elif collider == hitbox_body:
@@ -107,8 +106,10 @@ func timer(delta):
 func send_to_google_sheets():
 	#var script_path = "res://scripts/telemetry.py"
 	#OS.execute("ping", ["-w", "3", "godotengine.org"], false)
-	var script_path = "U://2024//Visualizacion de datos//Repo//visualizacion-datos-git//src//Game//scripts//test3.py"
-	OS.execute(script_path, [])
-
+	#var script_path = "U://2024//Visualizacion de datos//Repo//visualizacion-datos-git//src//Game//scripts//test3.py"
+	#OS.execute(script_path, [])
+	pass
+	
 func _python_test():
-	OS.execute("U://2024//Visualizacion de datos//Repo//visualizacion-datos-git//src//Game//scriptstest3.py", [])
+	#OS.execute("U://2024//Visualizacion de datos//Repo//visualizacion-datos-git//src//Game//scriptstest3.py", [])
+	pass

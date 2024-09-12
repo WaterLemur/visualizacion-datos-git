@@ -143,6 +143,7 @@ vertical_alignment = 1
 
 [node name="Floor" type="CSGMesh3D" parent="."]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+use_collision = true
 mesh = SubResource("PlaneMesh_huwfh")
 
 [node name="Actors" type="Node3D" parent="."]

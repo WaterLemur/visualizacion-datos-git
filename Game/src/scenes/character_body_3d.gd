@@ -1,13 +1,12 @@
 extends CharacterBody3D
 
 # Variables ---------------------------------------------------------
-const JUMP_VELOCITY = 10
-var speed = 25.0
+const JUMP_VELOCITY = 4.5
+var speed = 5.0
 
 var sensitivity = 1
-var sens_x = 0.25    # Sens multiplier
-var d = 1            # Delta
-var g = 2.5          # Gravity
+var sens_x = 0.25
+var d
 # References --------------------------------------------------------
 @onready var camera = $Camera3D
 
@@ -18,7 +17,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * g * delta
+		velocity += get_gravity() * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
