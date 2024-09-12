@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1hp1aallm3va"]
+[gd_scene load_steps=5 format=3 uid="uid://c1hp1aallm3va"]
 
+[ext_resource type="Script" path="res://scripts/intro.gd" id="1_as14g"]
 [ext_resource type="Texture2D" uid="uid://bbtit70scyar7" path="res://images/Infinity_Ga∞es_LOGO_5_C.png" id="1_h07g4"]
 [ext_resource type="LabelSettings" uid="uid://juhoq5735bkf" path="res://system/ls_title.tres" id="2_rabvv"]
 [ext_resource type="LabelSettings" uid="uid://cbyowgitfntqn" path="res://system/ls_small_text.tres" id="3_uhghj"]
@@ -11,35 +12,62 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_as14g")
 
 [node name="Background" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1159.0
-offset_bottom = 647.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="InfinityGa∞esLogo5C" type="Sprite2D" parent="."]
-position = Vector2(571, 250)
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InfinityGa∞esLogo5C" type="Sprite2D" parent="Control"]
 scale = Vector2(0.646484, 0.646484)
 texture = ExtResource("1_h07g4")
 
 [node name="Company Name" type="Label" parent="."]
-layout_mode = 0
-offset_left = 380.0
-offset_top = 474.0
-offset_right = 745.0
-offset_bottom = 548.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.5
+offset_top = 194.0
+offset_right = 182.5
+offset_bottom = 268.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Infinity Ga∞es"
 label_settings = ExtResource("2_rabvv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Developers" type="Label" parent="."]
-layout_mode = 0
-offset_left = 755.0
-offset_top = 545.0
-offset_right = 1120.0
-offset_bottom = 619.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = -80.0
+offset_right = -19.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
 text = "Water_Lemur;"
 label_settings = ExtResource("3_uhghj")
 horizontal_alignment = 2
