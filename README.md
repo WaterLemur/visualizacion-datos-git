@@ -8,6 +8,8 @@ IGASS Infinity Ga∞es ADVANCED Statistics Software
 
 # Assets
 
+Headshot ㅤㅤㅤㅤㅤBodyshotㅤㅤㅤㅤㅤMiss
+
 ![Headshot](https://github.com/WaterLemur/visualizacion-datos-git/blob/main/Web/Assets/headshot.jpg?raw=true)
 ![Bodyshot](https://github.com/WaterLemur/visualizacion-datos-git/blob/main/Web/Assets/bodyshot.jpg?raw=true)
 ![Miss](https://github.com/WaterLemur/visualizacion-datos-git/blob/main/Web/Assets/miss.jpg?raw=true)
