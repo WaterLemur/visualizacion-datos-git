@@ -2,7 +2,7 @@
 Proyecto visualizacion de datos
 
 > [!IMPORTANT]
-> Game:
+> Game: [TMP Game](https://water-lemur.itch.io/clicker-game)
 > Web: [Infinity Ga∞es Statistics](https://sites.google.com/view/visualizacion-datos-ig/home)
 
 
