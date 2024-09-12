@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-var speed = 5.0
+var speed = 20.0
 const JUMP_VELOCITY = 4.5
 var sens_x = 0.25
 var sensitivity = 1

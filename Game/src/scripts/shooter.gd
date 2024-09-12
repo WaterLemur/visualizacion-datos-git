@@ -29,7 +29,7 @@ func _unhandled_input(event):
 			print("Mouse button pressed!")
 			#if raycast.is_on_wall():
 			var collider = raycast.get_collider()
-			print(collider)
+			print(collider.name)
 			if collider == hitbox_head:
 				hs_on = true
 			elif collider == hitbox_body:
@@ -46,6 +46,9 @@ func _ready() -> void:
 	indicator_hs.visible = false
 	indicator_bs.visible = false
 	indicator_miss.visible = false
+	
+	_python_test()
+	#send_to_google_sheets()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -102,5 +105,10 @@ func timer(delta):
 		l_timer.text = m + ":" + s
 
 func send_to_google_sheets():
-	var script_path = "res://scripts/telemetry.py"
+	#var script_path = "res://scripts/telemetry.py"
+	#OS.execute("ping", ["-w", "3", "godotengine.org"], false)
+	var script_path = "U://2024//Visualizacion de datos//Repo//visualizacion-datos-git//src//Game//scripts//test3.py"
 	OS.execute(script_path, [])
+
+func _python_test():
+	OS.execute("U://2024//Visualizacion de datos//Repo//visualizacion-datos-git//src//Game//scriptstest3.py", [])
