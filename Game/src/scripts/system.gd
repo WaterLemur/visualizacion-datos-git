@@ -6,9 +6,16 @@ var game = preload("res://scenes/game.tscn").instantiate()
 
 var timer = 10.0 #1.69
 
+var subject = 'visualización de datos'
+var company = 'Infinity Ga∞es'
+var dev = 'Water_Lem'
+
+@onready var l_time = $HUD/Info
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	l_time.text = subject + '  -  ' + company + '     ----->     ' + str(Time.get_date_dict_from_system(true))
 	_load_intro()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

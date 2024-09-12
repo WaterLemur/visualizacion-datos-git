@@ -7,33 +7,49 @@ script = ExtResource("1_1gjsa")
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="New Game" type="Button" parent="HUD"]
-layout_mode = 0
-offset_left = 447.0
-offset_top = 338.0
-offset_right = 669.0
-offset_bottom = 385.0
+[node name="Background" type="ColorRect" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -54.0
+offset_right = 160.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="New Game" type="Button" parent="HUD/VBoxContainer"]
+layout_mode = 2
+action_mode = 0
 text = "Shooter"
 
-[node name="Options" type="Button" parent="HUD"]
-layout_mode = 0
-offset_left = 448.0
-offset_top = 436.0
-offset_right = 670.0
-offset_bottom = 483.0
+[node name="Options" type="Button" parent="HUD/VBoxContainer"]
+layout_mode = 2
+action_mode = 0
 text = "Options"
 
-[node name="Exit" type="Button" parent="HUD"]
-layout_mode = 0
-offset_left = 449.0
-offset_top = 534.0
-offset_right = 671.0
-offset_bottom = 581.0
+[node name="Exit" type="Button" parent="HUD/VBoxContainer"]
+layout_mode = 2
 text = "Exit
 "
 
-[connection signal="pressed" from="HUD/New Game" to="." method="_new_game_pressed"]
+[connection signal="pressed" from="HUD/VBoxContainer/New Game" to="." method="_new_game_pressed"]
